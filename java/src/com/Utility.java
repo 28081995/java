@@ -329,7 +329,6 @@ public class Utility {
 
 	/***********************************************************************************************************
 	 * to print a string array
-	 * 
 	 * @param arr
 	 */
 	public static void printArray(String arr[]) {
@@ -405,7 +404,7 @@ public class Utility {
 	 */
 	/**
 	 * @param names
-	 *            function for merge sort
+	 * function for merge sort
 	 */
 	public static void mergeSort(String[] names) {
 		if (names.length > 2) {
@@ -573,16 +572,17 @@ public class Utility {
 	 */
 	/**
 	 * conversion of decimal to binary
+	 * 
 	 * @param dec
 	 */
 	public static void tobinary(int dec) {
 		String bin = "";
 		while (dec >= 1) {
-			int rem = dec % 2; //remainder
-			bin = rem + bin;   
+			int rem = dec % 2; // remainder
+			bin = rem + bin;
 			dec = dec / 2;
 		}
-		System.out.println("binary value of given decimal is " + bin);//print binary value
+		System.out.println("binary value of given decimal is " + bin);// print binary value
 
 	}
 	/**************************************************************************************************
