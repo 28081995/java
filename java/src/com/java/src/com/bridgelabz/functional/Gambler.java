@@ -16,7 +16,7 @@ public class Gambler {
 		System.out.println("enter no of trials");
 		int trials = u.inputInteger();
 		System.out.println("enter no of bets");
-		int bets = u.inputInteger();
+		int bets = 24;
 		int wins = 0;
 
 		// no of trials taking to play

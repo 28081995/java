@@ -178,116 +178,13 @@ public class Utility {
 	/***********************************************************************************
 	 * 
 	 */
-	/**
-	 * finding 2d array
-	 * 
-	 * @param n
-	 * @param m
-	 * @return
-	 */
-
-	public static int[][] arrayInt(int n, int m) {
-		Scanner sc = new Scanner(System.in);
-		int[][] a = new int[n][m];
-		System.out.println("enter int array elements:");
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				a[i][j] = sc.nextInt();
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * @param a
-	 * @param n
-	 * @param m
-	 */
-	public static void printArrayInt(int[][] a, int n, int m) {
-
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				System.out.print(" " + a[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-
-	/**
-	 * @param n
-	 * @param m
-	 * @return
-	 */
-	public static double[][] arrayDouble(int n, int m) {
-		Scanner sc = new Scanner(System.in);
-		double[][] a = new double[n][m];
-		System.out.println("enter double array elements:");
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				a[i][j] = sc.nextDouble();
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * @param a
-	 * @param n
-	 * @param m
-	 */
-	public static void printArrayDouble(double[][] a, int n, int m) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				System.out.print(" " + a[i][j] + " ");
-			}
-
-			System.out.println();
-		}
-
-	}
-
-	/**
-	 * @param n
-	 * @param m
-	 * @return
-	 */
-	public static boolean[][] arrayBoolean(int n, int m) {
-		Scanner sc = new Scanner(System.in);
-		boolean[][] a = new boolean[n][m];
-		System.out.println("enter boolean array elements:");
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				a[i][j] = sc.nextBoolean();
-			}
-		}
-		return a;
-	}
-
-	/**
-	 * @param a
-	 * @param n
-	 * @param m
-	 */
-	public static void printArrayBoolean(boolean[][] a, int n, int m) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				System.out.print(" " + a[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-
-	/*************************************************************************************
-	 * 
-	 */
 
 	/**
 	 * function to find prime number or not
 	 * 
 	 * @param num
-	 * @return 
 	 */
-	public static String[] rangePrime() {
+	public static void rangePrime() {
 		for (int i = 0; i <= 1000; i++) {
 			boolean b = Utility.findPrime(i);
 			if (b) // if num is prime then only prints
@@ -295,7 +192,6 @@ public class Utility {
 				System.out.print(i + " ");
 			}
 		}
-		return null;
 	}
 
 	public static boolean findPrime(int num) {
@@ -322,9 +218,8 @@ public class Utility {
 	 *            string 1
 	 * @param st2
 	 *            string 2
-	 * @return 
 	 */
-	public static boolean checkAnagram(String st1, String st2) {
+	public static void checkAnagram(String st1, String st2) {
 		String s1 = st1.replaceAll(" ", ""); // remove the space
 		String s2 = st2.replaceAll(" ", "");
 
@@ -344,7 +239,6 @@ public class Utility {
 			System.out.println("given strings " + s1 + " " + s2 + " are anagrams");
 		else
 			System.out.println("given strings " + s1 + " " + s2 + " are not anagrams");
-		return false;
 
 	}
 

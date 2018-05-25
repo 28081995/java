@@ -5,9 +5,9 @@ import com.bridgelabz.utility.Utility;
 public class PrimeAnagramPalindrome {
 	public static void main(String[] args) {
 
-		// Utility u = new Utility();
-		// System.out.println("enter a number ");
-
+		Utility u = new Utility();
+		System.out.println("enter a number ");
+		int num = u.inputInteger();
 		// prime numbers array between 0 and 1000
 		String[] primeNumbers = Utility.rangePrime();
 

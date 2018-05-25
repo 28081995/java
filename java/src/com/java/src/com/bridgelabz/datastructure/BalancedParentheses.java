@@ -3,11 +3,12 @@ package com.bridgelabz.datastructure;
 public class BalancedParentheses {
 	
 	public static void main(String[] args) {
-		char[] par= {'(',')'};
+		char[] par= {'(',')','{','}'};
 		if(isParBalanced(par))
 			System.out.println("balanced paranthesis");
 		else
-			System.out.println("not balanced paranthesis");	
+			System.out.println("not balanced paranthesis");
+		
 	}
 	public static boolean isParBalanced(char[] par)
 	{
@@ -16,6 +17,7 @@ public class BalancedParentheses {
 		int count1=0;
 		for(int i=0;i<par.length;i++)
 		{
+			
 			if(par[i]=='(')
 			{
 			  count++;
@@ -32,8 +34,11 @@ public class BalancedParentheses {
 				return false;
 			
 		}
-		return false;	
+		return false;
+		
 	}
+	
+	
 }
 	class Stack
 	{
