@@ -12,43 +12,19 @@ import com.bridgelabz.utility.Utility;
 public class Replacestring {
 	 String name;
 	 String email;
-	 static String REGEX_NAME="<name>";
-	 String REGEX_EMAIL="<email>";
-	
-	public String getName() {
-		return name;
-	}
+	 static String REGEX_NAME="<.[a-z][0-9]>";
 
-	public static void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getREGEX_NAME() {
-		return REGEX_NAME;
-	}
 
 	public static void main(String[] args) {
 		Utility u = new Utility();
 		System.out.println("enter the user name");
-		setName(u.inputString());
-		System.out.println("enter the user email");
-		String useremail = u.inputString();
-		//System.out.print("Hello " + username + ", How are you?");
+		String userName=u.inputString();
+		
         		 
 		Pattern p=Pattern.compile(REGEX_NAME);
-		boolean m=Pattern.matches(REGEX_NAME,getName());
-		boolean m1=Pattern.matches(REGEX_EMAIL,getEmail());
-	
-		
-		
-		
+		Matcher m=p.matcher(userName);
+		m.replaceAll(userName);
+		System.out.print("Hello " + userName + ", How are you?");
+		m.replaceAll(userName);
 	}
 }

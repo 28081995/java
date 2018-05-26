@@ -1,8 +1,12 @@
 package com.bridgelabz.datastructure;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import com.bridgelabz.utility.Utility;
 
 public class UnOrderedList {
 	public static void main(String[] args) throws IOException {
@@ -13,7 +17,6 @@ public class UnOrderedList {
 		BufferedReader br = new BufferedReader(fileReader);
 		String file;
 		LinkedList ll = new LinkedList();
-
 		try {
 			while ((file = br.readLine()) != null) {
 
@@ -25,12 +28,30 @@ public class UnOrderedList {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ll.print();
-		boolean found = ll.search();
-		if (found)
-			System.out.println("serching text found");
-		else
-			System.out.println("text not found");
+		
+		Utility u=new Utility();
+		System.out.print("Enter a word to search: ");
+		String search = u.inputString();	//	word to be searched
+		int pos;	//	position of the word in the file
+		
+		if((pos = ll.index(search)) == -1) {	//	not in the file
+			System.out.println("This word is not in the file. Adding it to the list.");
+			ll.add(search);
+		}
+		else {	//	word found
+			System.out.println("Word is at " + pos + ". Removing it from list.");
+			ll.remove(search);
+		}
+		try {	//	writes list to the file
+			int size = ll.size();
+			PrintWriter printWriter = new PrintWriter("/home/bridgeit/Sid/UnorderedListFile.txt");
+			for(int i = 0; i < size; i++) {
+				String st = ll.pop(i);
+				printWriter.write(st + " ");
+			}
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+}
 	}
-
 }
