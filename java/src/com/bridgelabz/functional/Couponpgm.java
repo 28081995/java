@@ -7,7 +7,6 @@ public class Couponpgm {
 		System.out.println(count);
 
 	}
-
 	public static int collect(int n) {
 		boolean[] isCollected = new boolean[n];
 		int count = 0;

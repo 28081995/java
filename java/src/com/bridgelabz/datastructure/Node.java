@@ -1,23 +1,19 @@
 package com.bridgelabz.datastructure;
 
-public class Node {
-	Object data;
-	Node next;
+public class Node<T> {
+	T ele;
+	Node<T> next;
 
-	public Node(Object data) {
-		this.data = data;
+	public Node(T ele) {
+		this.ele = ele;
 	}
 
-	public Object getData() {
-		return data;
+	public Node(T ele, Node<T> next) {
+		this.ele = ele;
+		this.next = next;
 	}
 
-	public void setData(Object data) {
-		this.data = data;
+	public T getValue() {
+		return ele;
 	}
-
-	public String toString() {
-		return (",");
-	}
-
 }
