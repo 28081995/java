@@ -2,6 +2,10 @@ package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class PrimeExtension {
 
 	Prime2D object;
@@ -57,7 +61,6 @@ public class PrimeExtension {
 		return Utility.checkAnagram(String.valueOf(firstInterger), 
 				String.valueOf(secondInteger));
 	}
-	
 	/**
 	 * prints prime anagrams
 	 */

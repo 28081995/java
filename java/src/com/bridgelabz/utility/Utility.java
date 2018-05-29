@@ -15,6 +15,7 @@ public class Utility {
 		int num = sc.nextInt();
 		return num;
 	}
+
 	/*********************************************************************
 	 * 
 	 * @return double value to take double input from user
@@ -812,57 +813,50 @@ public class Utility {
 		}
 		return returnString;
 	}
+
 	/***************************************************************************************************
 	 * 
 	 */
 	/**
 	 * method for date validation in calender
+	 * 
 	 * @param day
 	 * @param month
 	 * @param year
 	 * @return
 	 */
-	public static boolean dateValidator(int day,int month,int year)
-	{
-		boolean b=false;
-      if((month==4 ||month==6 ||month==9||month==11) && day>30)
-      {
-    	 b=false; 
-      }
-      else if(month==2)
-      {
-    	if(year%100==0)  
-    	{
-    		if((year%400!=0)&&day>28){
-                b=false;}
-            else if((year%400==0)&&day>29) {
-                b=false;}
-            else
-                b=true;
-            }
-        }
-    if(year%100!=0)
-    {
-        if((year%4!=0)&&day>28){
-            b=true;}
-        else if((year%4==0)&&day>29) {
-            b=false;}
-        else
-        {
-            b=true;
-        }
-    }
-     if(day>31) {
-        b=false;
-    }
-    else
-    {
-        b=true;
-    }
-    return b;
+	public static boolean dateValidator(int day, int month, int year) {
+		boolean b = false;
+		if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
+			b = false;
+		} else if (month == 2) {
+			if (year % 100 == 0) {
+				if ((year % 400 != 0) && day > 28) {
+					b = false;
+				} else if ((year % 400 == 0) && day > 29) {
+					b = false;
+				} else
+					b = true;
+			}
+		}
+		if (year % 100 != 0) {
+			if ((year % 4 != 0) && day > 28) {
+				b = true;
+			} else if ((year % 4 == 0) && day > 29) {
+				b = false;
+			} else {
+				b = true;
+			}
+		}
+		if (day > 31) {
+			b = false;
+		} else {
+			b = true;
+		}
+		return b;
 	}
-/******************************************************************************************************
- * 
- */
+	/******************************************************************************************************
+	 * 
+	 */
 
 }
