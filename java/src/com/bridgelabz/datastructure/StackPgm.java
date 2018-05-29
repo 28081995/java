@@ -27,26 +27,25 @@ public class StackPgm {
 		}
 		return array[top--];
 	}
-	public int peek()
-	{
-		if(top==-1) {
+
+	public int peek() {
+		if (top == -1) {
 			System.out.println("stack empty");
-		return -1;
+			return -1;
 		}
 		return array[top];
 	}
-	public boolean isEmpty()
-	{
-		return top==-1;
+
+	public boolean isEmpty() {
+		return top == -1;
 	}
-	public int msize()
-	{
+
+	public int msize() {
 		return msize;
 	}
-	public void print()
-	{
-		for(int i=0;i<=top;i++)
-		{
+
+	public void print() {
+		for (int i = 0; i <= top; i++) {
 			System.out.println(array[i]);
 		}
 	}

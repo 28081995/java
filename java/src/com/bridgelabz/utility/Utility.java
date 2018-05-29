@@ -15,7 +15,6 @@ public class Utility {
 		int num = sc.nextInt();
 		return num;
 	}
-
 	/*********************************************************************
 	 * 
 	 * @return double value to take double input from user
@@ -285,7 +284,7 @@ public class Utility {
 	 * function to find prime number or not
 	 * 
 	 * @param num
-	 * @return 
+	 * @return
 	 */
 	public static String[] rangePrime() {
 		for (int i = 0; i <= 1000; i++) {
@@ -322,7 +321,7 @@ public class Utility {
 	 *            string 1
 	 * @param st2
 	 *            string 2
-	 * @return 
+	 * @return
 	 */
 	public static boolean checkAnagram(String st1, String st2) {
 		String s1 = st1.replaceAll(" ", ""); // remove the space

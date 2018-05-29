@@ -1,77 +1,103 @@
 package com.bridgelabz.datastructure;
 
-public class Deque<T extends Comparable<T>> {
-	public class Node
-	{
-		T data;
-		Node next;
-		public Node(Comparable data2) {
-			this.data = (T) data2;
-		}
-		
-		int size;
-		Node front;
-		Node rear;
-	public void addRear(T data)
-	{
-		
-		Node node1=new Node(data);
-		if(front==null ||rear==null)
+/**
+ * @author bridgelabz
+ *
+ * @param <E>
+ */
+public class Deque<E> {
+
+	public E data;
+	public Deque<E> next;
+	public Deque<E> pre;
+
+	Deque<E> front;
+	Deque<E> rear;
+	int size = 0;
+
+	public Deque(E val) {
+		this.data = val;
+		this.next = null;
+		this.pre = null;
+	}
+
+	public Deque() {
+	}
+
+	// add front
+	public void addFront(E c) {
+		if (front == null) // if no element in list
 		{
-			front=node1;
-			rear=node1;
-			size++;
-	
+			front.data = c;
+			rear = front;
+		} else // if element in list
+		{
+			Deque<E> tNode = null;
+			tNode.data = c;
+			tNode.next = front;
+			front.pre = tNode;
+			front = tNode;
 		}
-		rear.next=node1;
-		rear=node1;
 		size++;
 	}
-	public Comparable removeRear()
-	{
-		Node temp=front;
-		while(temp.next!=rear)
+
+	// add rear
+	public void addRear(E c) {
+		if (front == null) // if no element in list
 		{
-			temp=temp.next;
-		}
-		rear=temp;
-		rear.next=null;
-		size--;
-		return (Comparable) rear.data;
-	}
-	public void addFront(Comparable data)
-	{
-		Node node1=new Node(data);
-		node1.next=front;
-		front=node1;
-		size++;;
-	}
-	public Comparable<String> removeFront()
-	{
-		if(front==null)
-		return "EMPTY QUEUE";
-		T data=front.data;
-		front=front.next;
-		if(front==null)
+			Deque<E> tNode = new Deque<E>(c);
+			front = tNode;
+			rear = front;
+		} else // if element in list
 		{
-			rear=null;
+			Deque<E> tNode = new Deque<>(c);
+			rear.next = tNode;
+			tNode.pre = rear;
+			rear = tNode;
+		}
+		size++;
+	}
+
+	// remove front
+	public E removeFront() {
+		E val = null;
+		if (front == null) {
+			System.out.println("No elements to delete");
+
+		} else {
+			val = front.data;
+			front = front.next;
 		}
 		size--;
-		return (Comparable) data;
+		return val;
 	}
-	public boolean isEmpty()
-	{
-		if(size==0)
+
+	// remove rear
+	public E removeRear() {
+		E val = null;
+		if (front == null) {
+			System.out.println("No element to delete");
+
+		} else {
+			val = rear.data;
+			rear = rear.pre;
+			rear.next = null;
+		}
+		size--;
+		return val;
+	}
+
+	// to remove
+	public boolean isEmpty() {
+		if (front == null)
 			return true;
-		return false;
+		else
+			return false;
 	}
-	public void display()
-	{
-		Node temp=front;
-		while(temp!=null)
-		{
-			temp=temp.next;
-		}
-	}
+
+	// return size of deque
+	public int size() {
+		return size;
 	}
 }
+
