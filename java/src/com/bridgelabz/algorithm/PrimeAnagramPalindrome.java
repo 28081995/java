@@ -8,7 +8,6 @@ import com.bridgelabz.utility.Utility;
  */
 public class PrimeAnagramPalindrome {
 	public static void main(String[] args) {
-
 		// Utility u = new Utility();
 		// System.out.println("enter a number ");
 
