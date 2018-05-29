@@ -657,7 +657,7 @@ public class Utility {
 	 * @param year
 	 * @return
 	 */
-	public static double dayOfWeek(int month, int day, int year) {
+	public static double dayOfWeek(int day, int month, int year) {
 		int y0 = year - (14 - month) / 12;
 		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
 		int m0 = month + 12 * ((14 - month) / 12) - 2;
@@ -815,5 +815,54 @@ public class Utility {
 	/***************************************************************************************************
 	 * 
 	 */
+	/**
+	 * method for date validation in calender
+	 * @param day
+	 * @param month
+	 * @param year
+	 * @return
+	 */
+	public static boolean dateValidator(int day,int month,int year)
+	{
+		boolean b=false;
+      if((month==4 ||month==6 ||month==9||month==11) && day>30)
+      {
+    	 b=false; 
+      }
+      else if(month==2)
+      {
+    	if(year%100==0)  
+    	{
+    		if((year%400!=0)&&day>28){
+                b=false;}
+            else if((year%400==0)&&day>29) {
+                b=false;}
+            else
+                b=true;
+            }
+        }
+    if(year%100!=0)
+    {
+        if((year%4!=0)&&day>28){
+            b=true;}
+        else if((year%4==0)&&day>29) {
+            b=false;}
+        else
+        {
+            b=true;
+        }
+    }
+     if(day>31) {
+        b=false;
+    }
+    else
+    {
+        b=true;
+    }
+    return b;
+	}
+/******************************************************************************************************
+ * 
+ */
 
 }

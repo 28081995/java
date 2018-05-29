@@ -12,7 +12,8 @@ public class DayOfWeek {
 		String[] days = { "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" };
 		// prints day of the week
 
-		int d1 = (int) Utility.dayOfWeek(month, day, year);
+		int d1 = (int) Utility.dayOfWeek(day,month, year);
 		System.out.println(days[(int) d1]);
+		
 	}
 }

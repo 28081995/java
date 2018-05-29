@@ -12,8 +12,12 @@ public class MonthlyPayment {
 		double Y = Double.parseDouble(args[1]);
 		double R = Double.parseDouble(args[2]);
 		double payment = u.monthlyPay(P, Y, R);
+		
 		System.out.println("Monthly payment required: " + payment);
-
+        
+		
+		
+		
 	}
 
 }
