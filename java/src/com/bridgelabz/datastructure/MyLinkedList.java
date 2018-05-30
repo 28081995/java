@@ -1,147 +1,223 @@
 package com.bridgelabz.datastructure;
 
-public class MyLinkedList<T extends Comparable<T>> {
-	private Node<T> first;
-	private Node<T> last;
-	private int count = 0;
+/**
+ * @author bridgelabz
+ *
+ * @param <T>
+ */
+public class MyLinkedList<T>{
+
+	MyNode<T> head;	//starting node
+	MyNode<T> current;	//last node
+	int position;	//position of last node
 
 	/**
-	 * Insert at the front of the list
-	 *
-	 * @param Object
-	 *            element
+	 * initializes linked list and sets head and current to null
+	 * sets position to -1 to shoe an empty list 
 	 */
-	public void add(T ele) {
-		if (first == null) {
-			first = new Node<T>(ele);
-			last = first;
-			count++;
-			return;
-		}
-		/**
-		 * Recursively traverse this list and add the node value at last
-		 *
-		 * @param node
-		 *            element
-		 */
-		last.next = new Node<T>(ele);
-		last = last.next;
-		count++;
-
-	}
-
-	public void add(int pos, T ele) {
-		if (pos == 0) {
-			first = new Node<T>(ele, first);
-			count++;
-			return;
-		}
-		Node<T> temp = first;
-		for (int i = 1; i < pos; i++) {
-			temp = temp.next;
-		}
-		temp.next = new Node<T>(ele, temp.next);
-		count++;
-
-	}
-
-	public int size() {
-		return count;
+	public MyLinkedList(){
+		head = null;
+		current = null;
+		position = -1;
 	}
 
 	/**
-	 * Remove the elment based on type of element
-	 *
-	 * @param Object
-	 *            key
+	 * @param data - data to be added]
+	 * adds element to the list at end of the list
 	 */
-	public void deleteNode(T key) {
-		Node<T> temp = first;
-		Node<T> prev = null;
-		if (temp != null && temp.ele.compareTo(key) == 0) {
-			first = temp.next; // Changed head
-			count--;
-			return;
+	public void add(T data){
+		MyNode<T> node = new MyNode<T>(data);
+		if(head == null){
+			head = node;
+			current = head;
 		}
-		while (temp != null && temp.ele != key) {
-			prev = temp;
-			temp = temp.next;
-			count--;
+		else{
+			current.next = node;
+			current = current.next;
 		}
-		if (temp == null)
-			return;
-		prev.next = temp.next;
+		position++;
 	}
-
-	public T deleteAtindex(int index) {
-		if (index == 0) {
-			T a = first.ele;
-			first = first.next;
-			count--;
-			return a;
-		}
-		Node<T> temp = first;
-		int k = 0;
-		while (k < index - 1) {
-			temp = temp.next;
-			k++;
-		}
-		T a = temp.ele;
-		temp.next = temp.next.next;
-		count--;
-		return a;
-
-	}
-
+	
 	/**
-	 * Recursively traverse this list and print the node value
+	 * @param data - data to be removed
+	 * removes given element from the list
 	 */
-	public void dispay() {
-		Node<T> temp = first;
-		while (temp != null) {
-
-			System.out.println(temp.ele);
-			temp = temp.next;
+	public void remove(T data){
+		MyNode<T> tempCurrent = head;
+		MyNode<T> tempPrev = null;
+		while(!tempCurrent.data.equals(data)){
+			tempPrev = tempCurrent;
+			tempCurrent = tempCurrent.next;
 		}
+		if(tempCurrent == head){
+			head = head.next;
+		}
+		else{
+			tempPrev.next = tempCurrent.next;
+		}
+		if(tempCurrent == current){
+			current = tempPrev;
+		}
+		position--;
 	}
-
-	public T getvalue(int index) {
-		Node<T> temp = first;
-		int count = 0;
-		while (temp != null) {
-			if (count == index) {
-				return temp.ele;
+	
+	/**
+	 * @param data - elements to be searched in the list
+	 * @returns true if the element is in the list else returns false
+	 */
+	public boolean search(T data){
+		return index(data) == -1 ? false : true; 
+	}
+	
+	/**
+	 * @returns true if the list is empty else returns false
+	 */
+	public boolean isEmpty(){
+		return position == -1 ? true : false;
+	}
+	
+	
+	/**
+	 * @returns size(number of elements) of the list
+	 */
+	public int size(){
+		return position + 1;
+	}
+	
+	
+	/**
+	 * @param data - data to be added
+	 * adds data to the end of the list
+	 */
+	public void append(T data){
+		add(data);
+	}
+	
+	
+	/**
+	 * @param data - element whose position is to be found out
+	 * @returns position of the element in the list if it is in the list 
+	 * else returns -1
+	 */
+	public int index(T data){
+		if(position == -1){
+			return -1;
+		}
+		MyNode<T> tempCurrent = head;
+		int tempPosition = 0;
+		
+		while(!tempCurrent.data.equals(data)){
+			if(tempCurrent == current) {
+				return -1;
 			}
-			count++;
-			temp = temp.next;
+			tempCurrent = tempCurrent.next;
+			tempPosition++;
 		}
-		return null;
+		return tempPosition;
 	}
 
-	public boolean search(T value) {
-		Node<T> temp = first;
-		while (temp != null) {
-			if (temp.ele.compareTo((T) value) == 0)
-				return true;
-			temp = temp.next;
+	
+	/**
+	 * @param pos , data- inserts element 'data' at 'pos' position
+	 */
+	public void insert(int pos , T data){
+
+		if((pos == position+1) || (position == -1)){
+			add(data);
 		}
-
-		return false;
-	}
-
-	public <T extends Comparable<T>> void addSorted(T ele) {
-		if (first == null) {
-			first = new Node(ele);
-			last = first;
-		} else {
-			Node temp = first;
-			while (temp.next != null && ((Comparable<T>) temp.next.ele).compareTo(ele) < 0) {
-				temp = temp.next;
+		else if(pos == 0){
+			MyNode<T> tempNode = head;
+			head = new MyNode<T>(data);
+			head.next = tempNode;
+		}
+		else{
+			MyNode<T> tempCurrent = head;
+			MyNode<T> tempPrev = null;
+			int tempPosition = 0;
+			while(tempPosition <= pos + 1){
+				tempPrev = tempCurrent;
+				tempCurrent = tempCurrent.next;
+				tempPosition++;
 			}
-
-			last = new Node(ele);
-			last.next = temp.next;
-			temp.next = last;
+			MyNode<T> newNode = new MyNode<T>(data);
+			newNode.next = tempCurrent;
+			tempPrev.next = newNode;
 		}
+		position++;
+	}
+	
+	/**
+	 * @param location - pops elements at given location
+	 * @returns element popped 
+	 */
+	public T pop(int location){
+		MyNode<T> tempCurrent = head;
+		MyNode<T> tempPrev = null;
+		int tempPosition = 0;
+		position--;
+		while(tempPosition != location){
+			tempPrev = tempCurrent;
+			tempCurrent = tempCurrent.next;
+			tempPosition++;
+		}
+		if(tempCurrent == head){
+			head = head.next;
+			return tempCurrent.data;
+		}
+		else if(tempCurrent == current){
+			current = tempPrev;
+			tempPrev.next = tempCurrent.next;
+			return tempCurrent.data;
+		}
+		else{
+			tempPrev.next = tempCurrent.next;
+			return tempCurrent.data;
+		}
+	}
+	
+	/**
+	 * @return pops and returns last element in the list
+	 */
+	public T pop(){
+		return pop(position);
+	}
+	
+	
+	/**
+	 * @param location
+	 * @returns object of given location
+	 */
+	public T get(int location) {
+		MyNode<T> tempCurrent = head;
+		int tempPosition = 0;
+		
+		while(tempPosition != location){
+			tempCurrent = tempCurrent.next;
+			tempPosition++;
+		}
+		
+		return tempCurrent.data;
+		
+	}
+	/**
+	 * prints all the elements in the list
+	 */
+	public void list(){
+		MyNode<T> tempCurrent = head;
+		while(tempCurrent != null){
+			System.out.println(tempCurrent.data);
+			tempCurrent = tempCurrent.next;
+		}
+	}	
+}
+
+
+class MyNode<T>{
+	T data;	//data to be stored
+	MyNode<T> next;	//reference to the next node
+	
+	MyNode(T data){
+		this.data = data;
+		next = null;
 	}
 }

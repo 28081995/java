@@ -12,10 +12,7 @@ public class Prime2D {
 	public static void main(String[] args) {
 		Prime2D p2D = new Prime2D();
 		p2D.primerange();
-		// p2D.print();
-
 	}
-
 	public void primerange() {
 		int[][] primeNumbers = new int[10][];
 		for (int i = 0; i < 10; i++) {

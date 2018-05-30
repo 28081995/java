@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * @author bridgelabz
- *
  */
 public class PrimeAnagramPalindrome {
 	public static void main(String[] args) {

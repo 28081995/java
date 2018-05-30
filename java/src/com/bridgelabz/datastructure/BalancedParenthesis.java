@@ -2,6 +2,10 @@ package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class BalancedParenthesis {
 	public static void main(String[] args) {
 		Utility u = new Utility();
