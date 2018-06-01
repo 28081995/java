@@ -24,7 +24,6 @@ public class Deque<E> {
 	public Deque() {
 	}
 
-	// add front
 	public void addFront(E c) {
 		if (front == null) // if no element in list
 		{

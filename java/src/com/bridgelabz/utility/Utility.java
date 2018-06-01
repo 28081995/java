@@ -15,6 +15,16 @@ public class Utility {
 		return num;
 	}
 
+	/********************************************************************
+	 * 
+	 * @return
+	 */
+	public long inputLong() {
+		Scanner sc = new Scanner(System.in);
+		long num = sc.nextLong();
+		return num;
+	}
+
 	/*********************************************************************
 	 * 
 	 * @return double value to take double input from user
@@ -419,7 +429,7 @@ public class Utility {
 			} else
 				end = mid - 1;
 		}
-		return -1;
+		return start;
 	}
 
 	/************************************************************************************************************
@@ -472,6 +482,19 @@ public class Utility {
 				j = j - 1;
 			}
 			arr[j + 1] = key;
+		}
+	}
+
+	public static void insertionsort(int a[]) {
+		for (int j = 1; j < a.length; j++) {
+			int key = a[j];
+
+			int i = j - 1;
+			while ((i > -1) && (a[i] > key)) {
+				a[i + 1] = a[i];
+				i--;
+			}
+			a[i + 1] = key;
 		}
 	}
 
@@ -581,7 +604,6 @@ public class Utility {
 			for (int i = 0; i < right.length; i++) {
 				right[i] = names[i + names.length / 2];
 			}
-
 			mergeSort(left);
 			mergeSort(right);
 			merge(names, left, right);

@@ -18,7 +18,7 @@ public class InsertionSortInteger {
 			arr[i] = u.inputInteger();
 		}
 
-		Utility.intinsertionsort(arr);
+		Utility.insertionsort(arr);
 		Utility.printArray(arr);
 	}
 

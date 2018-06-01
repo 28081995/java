@@ -1,5 +1,7 @@
 package com.bridgelabz.datastructure;
 
+import java.util.ListIterator;
+
 /**
  * @author bridgelabz
  *
@@ -10,7 +12,7 @@ public class MyLinkedList<T>{
 	MyNode<T> head;	//starting node
 	MyNode<T> current;	//last node
 	int position;	//position of last node
-
+    
 	/**
 	 * initializes linked list and sets head and current to null
 	 * sets position to -1 to shoe an empty list 
@@ -19,6 +21,10 @@ public class MyLinkedList<T>{
 		head = null;
 		current = null;
 		position = -1;
+	}
+
+	public MyLinkedList(int numcards) {
+		numcards=52;
 	}
 
 	/**
@@ -208,10 +214,9 @@ public class MyLinkedList<T>{
 			System.out.println(tempCurrent.data);
 			tempCurrent = tempCurrent.next;
 		}
-	}	
+	}
+	
 }
-
-
 class MyNode<T>{
 	T data;	//data to be stored
 	MyNode<T> next;	//reference to the next node

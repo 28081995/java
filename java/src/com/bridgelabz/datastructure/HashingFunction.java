@@ -15,7 +15,7 @@ public class HashingFunction {
 
     public static void main(String[] args) throws IOException {
         Utility u = new Utility();
-        Integer[] myList = u.fileWriterIntegers(filePath);
+        Integer[] myList = fileWriterIntegers(filePath);
 
         HashMap<Integer, LinkedList<Integer>> map = new HashMap<Integer, LinkedList<Integer>>();
         LinkedList<Integer>[] List = new LinkedList[slots];
@@ -48,6 +48,10 @@ public class HashingFunction {
             System.out.println("Final Map: " + map);
        
     }
+
+	private static Integer[] fileWriterIntegers(String filePath2) {
+		return null;
+	}
   
 }
 
