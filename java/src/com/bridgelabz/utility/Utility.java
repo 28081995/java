@@ -903,7 +903,55 @@ public class Utility {
 		}
 		return b;
 	}
+
 	/******************************************************************************************************
+	 * 
+	 */
+	/**
+	 * function for deck of cards to store in an array
+	 */
+
+	public static String[][] cardInitialize(String[][] deck, String[] RANK, String[] SUIT) {
+		for (int i = 0; i < SUIT.length; i++) {
+			for (int j = 0; j < RANK.length; j++) {
+				deck[i][j] = SUIT[i] + "  - " + RANK[j] + "  ";
+			}
+
+		}
+		return deck;
+	}
+
+	/**
+	 * function for shuffling of cards
+	 */
+	public static String[][] shuffleCards(String[][] deck, int suitsize, int ranksize) {
+		for (int i = 0; i < suitsize; i++) {
+			for (int j = 0; j < ranksize; j++) {
+				int random = (int) (Math.random() * suitsize);
+				int random1 = (int) (Math.random() * ranksize);
+				String temp = deck[random][random1];
+				deck[random][random1] = deck[i][j];
+				deck[i][j] = temp;
+
+			}
+		}
+		return deck;
+	}
+
+	/**
+	 * function for displaying cards or print
+	 */
+
+	public static void printCards(String[][] deck) {
+		for (int i = 0; i < 4; i++) {
+			System.out.println("** Person " + (i + 1) + " **");
+			for (int j = 0; j < 9; j++) {
+				System.out.println(deck[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	/******************************************************************************************
 	 * 
 	 */
 

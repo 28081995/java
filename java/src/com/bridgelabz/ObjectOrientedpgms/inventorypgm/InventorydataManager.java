@@ -17,7 +17,7 @@ import com.bridgelabz.utility.Utility;
  * @author bridgelabz
  *
  */
-public class Inventorydata {
+public class InventorydataManager {
 	static int sumrice = 0, totalrice = 0, sumwheat = 0, totalwheat = 0, sumpulse = 0, totalpulse = 0;
 	static Utility u = new Utility();
 
@@ -58,7 +58,7 @@ public class Inventorydata {
 		JSONArray arr = (JSONArray) jsonObject.get("ricelist");
 		JSONArray arr1 = (JSONArray) jsonObject.get("wheatlist");
 		JSONArray arr2 = (JSONArray) jsonObject.get("pulselist");
-        //to find total rice
+		// to find total rice
 		for (int i = 0; i < arr.size(); i++) {
 
 			JSONObject obj = (JSONObject) arr.get(i);
@@ -68,7 +68,7 @@ public class Inventorydata {
 		}
 		System.out.println(sumrice);
 		System.out.println(totalrice);
-       //to find total wheat
+		// to find total wheat
 		for (int i = 0; i < arr1.size(); i++) {
 
 			JSONObject obj = (JSONObject) arr1.get(i);
@@ -78,7 +78,7 @@ public class Inventorydata {
 		}
 		System.out.println(sumwheat);
 		System.out.println(totalwheat);
-       //to find total pulse
+		// to find total pulse
 		for (int i = 0; i < arr2.size(); i++) {
 
 			JSONObject obj = (JSONObject) arr2.get(i);

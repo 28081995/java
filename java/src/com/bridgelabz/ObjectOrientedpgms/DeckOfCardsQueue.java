@@ -8,7 +8,7 @@ import com.bridgelabz.datastructure.MyLinkedList;
  * @author bridgelabz
  *
  */
-public class DeckOfCards {
+public class DeckOfCardsQueue {
 
 	static int numcards;
 

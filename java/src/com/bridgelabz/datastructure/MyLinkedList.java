@@ -1,7 +1,5 @@
 package com.bridgelabz.datastructure;
 
-import java.util.ListIterator;
-
 /**
  * @author bridgelabz
  *
