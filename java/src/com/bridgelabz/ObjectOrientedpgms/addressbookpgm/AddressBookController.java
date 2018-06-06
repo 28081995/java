@@ -1,9 +1,14 @@
 package com.bridgelabz.ObjectOrientedpgms.addressbookpgm;
 
+import java.io.IOException;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+
 import com.bridgelabz.utility.Utility;
 
 public class AddressBookController {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
 		Utility u = new Utility();
 		AddressBook book=new AddressBook();
 		System.out.println("enter what you want to do");
@@ -44,6 +49,8 @@ public class AddressBookController {
 		case 11:
 			AddressBook.quit();
 			break;
+		default: 
+				break;
 
 		}
 	}
