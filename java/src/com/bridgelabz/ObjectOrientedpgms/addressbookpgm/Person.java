@@ -1,14 +1,10 @@
 package com.bridgelabz.ObjectOrientedpgms.addressbookpgm;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Person {
@@ -72,9 +68,9 @@ public class Person {
 	public void setPhno(long phno) {
 		this.phno = phno;
 	}
-	public JSONObject tojsonobject() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
-		ObjectMapper objectmapper=new ObjectMapper();
-		
+	
+	public JSONObject tojsonobject() throws JsonGenerationException, JsonMappingException, IOException, ParseException 
+	{
 		JSONObject jsonobject=new JSONObject();
 		jsonobject.put("fname", fname);
 		jsonobject.put("lname", lname);
@@ -83,14 +79,16 @@ public class Person {
 		jsonobject.put("state", state);
 		jsonobject.put("zipcode",zipcode);
 		jsonobject.put("phno", phno);
-		
+		/*PersonList list=new PersonList();
+		ObjectMapper objectmapper=new ObjectMapper();
 		objectmapper.writeValue(
-				new File("/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addressbookpgm/addressbook.json"), jsonobject);
-		JSONParser parser=new JSONParser();
-		Object ob = parser.parse(new FileReader("/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addressbookpgm/addressbook.json"));
-		JSONObject jsonObject = (JSONObject) ob;
-		
+				new File("/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addressbookpgm/addressbook.json"),list);
+		//JSONParser parser=new JSONParser();
+*/		//Object ob = parser.parse(new FileReader("/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addressbookpgm/addressbook.json"));
+		//JSONObject jsonObject = (JSONObject) ob;
 		return jsonobject;
+		
+		
 	}
 	
 	

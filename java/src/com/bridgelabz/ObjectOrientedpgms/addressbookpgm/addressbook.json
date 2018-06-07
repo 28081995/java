@@ -1,1 +1,22 @@
-{"zipcode":123,"fname":"as","lname":"v","address":"asdf","city":"qwe","state":"kar","phno":123456789}
+{
+	"plist": [
+		{
+			"fname": "ar",
+			"lname": "bh",
+			"address": "hhh",
+			"city": "rnr",
+			"state": "kar",
+			"zipcode": 11,
+			"phno": 22222
+		},
+		{
+			"fname": "kubi",
+			"lname": "hh",
+			"address": "uu",
+			"city": "dddd",
+			"state": "ssss",
+			"zipcode": 2,
+			"phno": 7777
+		}
+	]
+}
