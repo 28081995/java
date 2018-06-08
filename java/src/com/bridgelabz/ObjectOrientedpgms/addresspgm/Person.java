@@ -1,13 +1,13 @@
-package com.bridgelabz.ObjectOrientedpgms.addressbookpgm;
+package com.bridgelabz.ObjectOrientedpgms.addresspgm;
 
 public class Person {
-	private String fname;
-	private String lname;
-	private String address;
-	private String city;
-	private String state;
-	private int zipcode;
-	private long phno;
+	 String fname;
+	 String lname;
+	 String address;
+	 String city;
+	 String state;
+	 int zipcode;
+	long phno;
 
 	public Person(String fname, String lname, String address, String city, String state, int zipcode, long phno) {
 		this.fname = fname;
@@ -17,9 +17,6 @@ public class Person {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.phno = phno;
-	}
-
-	public Person() {
 	}
 
 	public String getFname() {
@@ -77,8 +74,5 @@ public class Person {
 	public void setPhno(long phno) {
 		this.phno = phno;
 	}
-
-	
-	 
 
 }

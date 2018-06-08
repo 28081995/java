@@ -1,4 +1,4 @@
-package com.bridgelabz.ObjectOrientedpgms.addressbookpgm;
+package com.bridgelabz.ObjectOrientedpgms.addresspgm;
 
 import java.io.IOException;
 
@@ -9,10 +9,14 @@ import org.json.simple.parser.ParseException;
 import com.bridgelabz.utility.Utility;
 
 public class AddressBookController {
-	public static void main(String[] args)
-			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
-		Utility u = new Utility();
-		AddressBook book = new AddressBook();
+	static Utility u = new Utility();
+	static AddressBook book = new AddressBook();
+	
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+		option();
+	}
+		public static void option() throws JsonGenerationException, JsonMappingException, IOException, ParseException
+		{
 		System.out.println("enter what you want to do");
 		System.out.println("press" + "\n" + "1. to add" + "\n" + "2. edit " + "\n" + "3. delete " + "\n"
 				+ "4. sortbyName" + "\n" + "5. sortbyZip" + "\n" + "6. createnew " + "\n" + "7. open ");
@@ -28,6 +32,7 @@ public class AddressBookController {
 			AddressBook.delete();
 			break;
 		case 4:
+			
 			AddressBook.sortByName();
 			break;
 		case 5:
@@ -55,6 +60,7 @@ public class AddressBookController {
 			break;
 
 		}
+		
 	}
 
 }
