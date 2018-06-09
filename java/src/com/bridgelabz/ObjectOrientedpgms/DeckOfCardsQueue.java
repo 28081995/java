@@ -15,7 +15,9 @@ public class DeckOfCardsQueue {
 	public static void main(String[] args) {
 		String[] suit = { "clubs", "diamonds", "hearts", "spades" };
 		String[] rank = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
-		MyLinkedList deck = new MyLinkedList(numcards);
+		
+		
+		/*MyLinkedList deck = new MyLinkedList(numcards);
 		MyLinkedList shuffledDeck = new MyLinkedList();
 		Random random = new Random();
 
@@ -28,8 +30,12 @@ public class DeckOfCardsQueue {
 		for (int i = 0; i < numcards; i++) {
 			opt = random.nextInt(deck.size());
 
-		}
-
+		}*/
+       
+		
+		
+		
+		
 	}
 
 }

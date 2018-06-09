@@ -130,7 +130,8 @@ public class AddressBook {
 		}
 	}
 
-	public static boolean search(String sname) throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+	public static boolean search(String sname)
+			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list.size(); i++) {
 			if (sname.equals(list.get(i).getFname())) {
 				System.out.println("person found and is at position " + i);
@@ -141,12 +142,12 @@ public class AddressBook {
 		abcontrol.option();
 		return false;
 	}
+
 	public static void delete() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter first name of person you want to delete");
 		String name = u.inputString();
 		boolean b = search(name);
-		if(b)
-		{
+		if (b) {
 			list.remove(index);
 			objectmapper.writeValue(filepath, list);
 			System.out.println("person deleted");
@@ -155,68 +156,65 @@ public class AddressBook {
 	}
 	public static void sortByName() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
-		Object ob=parser.parse(new FileReader("/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addresspgm/addressbook.json"));
-		JSONArray arr = (JSONArray) ob;
-		System.out.println(arr);
-		/*for(int i=0;i<arr.size();i++)
-		{
-			JSONObject o1= (JSONObject) arr.get(i);
-		}*/
-		
-		for (int i = 0; i < arr.size(); i++) {
-			for(int j=i+1;j<arr.size();j++)
-			{
-				JSONObject o1= (JSONObject) arr.get(i);
-				String st1=(String) o1.get("fname");
-				JSONObject o2=(JSONObject) arr.get(j);
-				String st2=(String) o2.get("fname");
+		Object ob = parser.parse(new FileReader(filepath));
 				
-				arr.set(i, o1);
-				arr.set(j, o2);
-				//String st1=((Person) arr.get(i)).getFname();
-				//String st2=((Person) arr.get(j)).getFname();
-				//String st1=(String) o1.get("fname");
-				//String st1=(String) o1.get("fname");
-				//JSONObject o2=(JSONObject) arr.get(i);
-				//String st2=(String) o2.get("fname");
-				//String st2=((Person) arr.get(j)).getFname();
-				if(( st1).compareTo(st2)>0)
-				{
-					String temp=st1;
-					st1=st2;
-					st2= temp;
-				}
-			}
+		JSONArray arr=(JSONArray) ob;
+		System.out.println(arr);
+		ArrayList<JSONObject>arraylist=new ArrayList<JSONObject>();
+		for(int i=0;i<arr.size();i++)
+		{
+			JSONObject jobj=(JSONObject) arr.get(i);
+			arraylist.add(jobj);
 		}
-		objectmapper.writeValue(filepath, list);
+		for (int i = 0; i <arraylist.size()-1; i++) {
+			for (int j = i + 1; j < arraylist.size(); j++) {
+				 
+			                JSONObject person1 = (JSONObject)arraylist.get(i);
+			                String key1 = (String) person1.get("fname");
+			                JSONObject person2 =  (JSONObject) arraylist.get(j);
+			                String key2 = (String) person2.get("fname");
+			                if (key1.compareTo(key2) > 0) {
+			                    JSONObject temp = person1; 
+			                    arraylist.set(i, person2);
+			                    arraylist.set(j, person1);
+			                }
+			            }
+			        }
+		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("first name wise sorted");
 	}
 
-	public static void sortByZIP() {
+	public static void sortByZIP() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		Object ob = parser.parse(new FileReader(filepath));
+		JSONArray arr=(JSONArray) ob;
+		System.out.println(arr);
+		ArrayList<JSONObject>arraylist=new ArrayList<JSONObject>();
+		for(int i=0;i<arr.size();i++)
+		{
+			JSONObject jobj=(JSONObject) arr.get(i);
+			arraylist.add(jobj);
+		}
+		for (int i = 0; i <arraylist.size()-1; i++) {
+			for (int j = i + 1; j < arraylist.size(); j++) {
+				 
+			                JSONObject person1 = (JSONObject)arraylist.get(i);
+			                long key1 = (long) person1.get("zipcode");
+			                JSONObject person2 =  (JSONObject) arraylist.get(j);
+			                long key2 = (long) person2.get("zipcode");
+			                if (key1>key2) {
+			                    JSONObject temp = person1;
+			                    arraylist.set(i, person2);
+			                    arraylist.set(j, person1);
+			                }
+			            }
+			        }
+		
+		objectmapper.writeValue(filepath, arraylist);
+		System.out.println("zipcode wise sorted");
 
 	}
-
-	public static void createNew() {
-
-	}
-
-	public static void save() {
-
-	}
-
-	public static void open() {
-
-	}
-
-	public static void saveAs() {
-
-	}
-
-	public static void print() {
-
-	}
-
 	public static void quit() {
-
+     System.exit(0);
 	}
 }

@@ -24,7 +24,6 @@ public class MyQueue<T> {
 		myLinkedList.add(data);
 		return;
 	}
-
 	/**
 	 * removes top element in the list
 	 * 
@@ -33,7 +32,6 @@ public class MyQueue<T> {
 	public T dequeue() {
 		return myLinkedList.pop(0);
 	}
-
 	/**
 	 * @returns true if list is empty else returns false
 	 */
