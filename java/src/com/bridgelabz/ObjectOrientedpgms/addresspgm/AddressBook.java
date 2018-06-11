@@ -32,7 +32,19 @@ public class AddressBook {
 	static File filepath = new File(
 			"/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addresspgm/addressbook.json");
 
-	public void add() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+	/*public static void createNew() 
+	{
+		if(filepath.createNewFile())
+		{
+			System.out.println("file is created");
+		abcontrol.option();
+	}
+		else {
+			System.out.println("file already exists");
+		abcontrol.option();
+		}
+	}*/
+	public static void add() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter how many person you wish to add");
 		int noofpersons = u.inputInteger();
 
@@ -61,10 +73,15 @@ public class AddressBook {
 		abcontrol.option();
 	}
 
-	public static void writebook(JSONObject jobj) throws JsonGenerationException, JsonMappingException, IOException {
 
+	public static void writebook(JSONObject jobj) throws JsonGenerationException, JsonMappingException, IOException {
+      /* System.out.println("do you want to save? then press yes");
+       String st=u.inputString();
+       if(st=="yes")
+       {*/
 		objectmapper = new ObjectMapper();
 		objectmapper.writeValue(filepath, list);
+       //}
 	}
 
 	public static JSONObject toJSONobject(Person person) {

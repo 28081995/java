@@ -6,6 +6,8 @@ public class Patient {
 	private long patientMobileNo;
 	private int patientAge;
 	
+	public Patient(String patientName2, int patientId2, int patientage2, long patientmobileno2) {
+	}
 	public String getPatientName() {
 		return patientName;
 	}
