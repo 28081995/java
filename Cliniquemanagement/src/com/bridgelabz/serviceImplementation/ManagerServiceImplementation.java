@@ -2,7 +2,10 @@ package com.bridgelabz.serviceImplementation;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -11,41 +14,58 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.controller.CliniqueManager;
+import com.bridgelabz.model.Appointment;
 import com.bridgelabz.model.Doctor;
 import com.bridgelabz.model.Patient;
 import com.bridgelabz.service.ManagerService;
 import com.bridgelabz.utility.Utility;
 
-public class ManagerServiceImplementation implements ManagerService{
+/**
+ * @author bridgelabz
+ *
+ */
+public class ManagerServiceImplementation implements ManagerService {
 	static String doctorName;
 	static int doctorId;
 	static String doctorSpecialisation;
 	static String doctorAvailability;
-	static Utility u=new Utility();
-	 static ArrayList<Doctor> list = new ArrayList<Doctor>();
-	 static ArrayList<Patient> list1 = new ArrayList<Patient>();
+	static String patientName;
+	static int patientId;
+	static long patientMobileNo;
+	static int patientAge;
+	static Utility u = new Utility();
+	static ArrayList<Doctor> list = new ArrayList<Doctor>();
+	static ArrayList<Patient> list1 = new ArrayList<Patient>();
+	static ArrayList<Appointment> list2 = new ArrayList<Appointment>();
 	static ObjectMapper objectmapper;
-	static File filepath=new File("/home/bridgelabz/aruna1/programs/Cliniquemanagement/src/com/bridgelabz/files/Doctor.json");
+
+	static File filepath = new File(
+			"/home/bridgelabz/aruna1/programs/Cliniquemanagement/src/com/bridgelabz/files/Doctor.json");
+	static File filepath1 = new File(
+			"/home/bridgelabz/aruna1/programs/Cliniquemanagement/src/com/bridgelabz/files/Patient.json");
+	static File filepath2 = new File(
+			"/home/bridgelabz/aruna1/programs/Cliniquemanagement/src/com/bridgelabz/files/Appointment.json");
+
 	Doctor doctor;
-	public void addDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException 
-	{
+	Patient patient;
+	static Appointment ap;
+
+	public void addDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter doctor details");
 		System.out.println("enter how many doctors are there?");
-		int noOfDoctors=u.inputInteger();
-		for(int i=0;i<noOfDoctors;i++)
-		{
+		int noOfDoctors = u.inputInteger();
+		for (int i = 0; i < noOfDoctors; i++) {
 			System.out.println("enter name of the doctor");
-			String doctorName=u.inputString();
+			String doctorName = u.inputString();
 			System.out.println("enter id");
-			int doctorId=u.inputInteger();
+			int doctorId = u.inputInteger();
 			System.out.println("enter doctor specialization");
-			String doctorSpecialisation=u.inputString();
+			String doctorSpecialisation = u.inputString();
 			System.out.println("enter doctor availability");
-			String doctorAvailability=u.inputString();
+			String doctorAvailability = u.inputString();
 			System.out.println("enter patient count");
-			int patientCount=u.inputInteger();
-			
-            doctor=new Doctor(doctorName,doctorId,doctorSpecialisation,doctorAvailability,patientCount);
+			int patientCount = u.inputInteger();
+			doctor = new Doctor(doctorName, doctorId, doctorSpecialisation, doctorAvailability, patientCount);
 			JSONObject jobj = toJSONobject(doctor);
 			System.out.println(jobj);
 			list.add(doctor);
@@ -53,6 +73,7 @@ public class ManagerServiceImplementation implements ManagerService{
 		}
 		CliniqueManager.option();
 	}
+
 	public static JSONObject toJSONobject(Doctor doctor) {
 		JSONObject jsonobject = new JSONObject();
 		jsonobject.put("doctorName", doctor.getDoctorName());
@@ -63,26 +84,29 @@ public class ManagerServiceImplementation implements ManagerService{
 
 		return jsonobject;
 	}
+
 	public static void writebook(JSONObject jobj) throws JsonGenerationException, JsonMappingException, IOException {
 
 		objectmapper = new ObjectMapper();
 		objectmapper.writeValue(filepath, list);
-		objectmapper.writeValue(filepath, list1);
 	}
+
 	static int index;
-	public static boolean search(String sname)
+
+	public static boolean search(String name)
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list.size(); i++) {
-			if (sname.equals(list.get(i).getDoctorName())) {
+			if (name.equals(list.get(i).getDoctorName())) {
 				System.out.println("doctor found and is at position " + i);
 				index = i;
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	public void deleteDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException  {
+
+	public void deleteDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of doctor you want to delete");
 		String name = u.inputString();
 		boolean b = search(name);
@@ -93,15 +117,15 @@ public class ManagerServiceImplementation implements ManagerService{
 		}
 		CliniqueManager.option();
 	}
-	
+
 	public void updateDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of doctor you want to update");
 		String name = u.inputString();
 		boolean b = search(name);
 		if (b) {
 			System.out.println("enter what do you want to update");
-			System.out.println(
-					" 1.doctorname " + "\n" + " 2.doctorid " + "\n" + " 3.doctorspecialization " + "\n" + " 4.doctoravailability  ");
+			System.out.println(" 1.doctorname " + "\n" + " 2.doctorid " + "\n" + " 3.doctorspecialization " + "\n"
+					+ " 4.doctoravailability  ");
 			int input = u.inputInteger();
 			switch (input) {
 			case 1:
@@ -122,9 +146,9 @@ public class ManagerServiceImplementation implements ManagerService{
 				list.get(index).setDoctorName(dspec);
 				objectmapper.writeValue(filepath, list);
 				break;
-			
+
 			}
-	}
+		}
 		CliniqueManager.option();
 	}
 
@@ -132,41 +156,46 @@ public class ManagerServiceImplementation implements ManagerService{
 	public void addPatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter patient details");
 		System.out.println("enter how many patients are there?");
-		int noOfPatients=u.inputInteger();
-		for(int i=0;i<noOfPatients;i++)
-		{
+		int noOfPatients = u.inputInteger();
+		for (int i = 0; i < noOfPatients; i++) {
 			System.out.println("enter name of the patient");
-			String patientName=u.inputString();
+			String patientName = u.inputString();
 			System.out.println("enter id");
-			int patientId=u.inputInteger();
+			int patientId = u.inputInteger();
 			System.out.println("enter patient age");
-			int patientage=u.inputInteger();
+			int patientAge = u.inputInteger();
 			System.out.println("enter patient mobileno");
-			long patientmobileno=u.inputInteger();
-			Patient patient=new Patient(patientName,patientId,patientage,patientmobileno);
-			JSONObject jobj = toJSONobject(patient);
-			System.out.println(jobj);
+			long patientMobileNo = u.inputLong();
+			patient = new Patient(patientName, patientId, patientMobileNo, patientAge);
+			JSONObject jobj1 = toJSONobject1(patient);
+			System.out.println(jobj1);
 			list1.add(patient);
-			writebook(jobj);
+			writebook1(jobj1);
 		}
 		CliniqueManager.option();
 	}
-	public static JSONObject toJSONobject(Patient patient) {
-		JSONObject jsonobject = new JSONObject();
-		jsonobject.put("patientName", patient.getPatientName());
-		jsonobject.put("patientId", patient.getPatientId());
-		jsonobject.put("patientAge", patient.getPatientAge());
-		jsonobject.put("patientMobileNo", patient.getPatientMobileNo());
-		
-		return jsonobject;
+
+	public static JSONObject toJSONobject1(Patient patient) {
+		JSONObject jsonobject1 = new JSONObject();
+		jsonobject1.put("patientName", patient.getPatientName());
+		jsonobject1.put("patientId", patient.getPatientId());
+		jsonobject1.put("patientAge", patient.getPatientAge());
+		jsonobject1.put("patientMobileNo", patient.getPatientMobileNo());
+
+		return jsonobject1;
 	}
-	
-	
+
+	public static void writebook1(JSONObject jobj1) throws JsonGenerationException, JsonMappingException, IOException {
+
+		objectmapper = new ObjectMapper();
+		objectmapper.writeValue(filepath1, list1);
+	}
+
 	@Override
 	public void deletePatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of patient you want to delete");
 		String name = u.inputString();
-		boolean b = search(name);
+		boolean b = search1(name);
 		if (b) {
 			list1.remove(index);
 			objectmapper.writeValue(filepath, list1);
@@ -174,7 +203,9 @@ public class ManagerServiceImplementation implements ManagerService{
 		}
 		CliniqueManager.option();
 	}
+
 	static int index1;
+
 	public static boolean search1(String sname)
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list1.size(); i++) {
@@ -186,6 +217,7 @@ public class ManagerServiceImplementation implements ManagerService{
 		}
 		return false;
 	}
+
 	@Override
 	public void updatePatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of patient you want to update");
@@ -193,8 +225,8 @@ public class ManagerServiceImplementation implements ManagerService{
 		boolean b = search(namep);
 		if (b) {
 			System.out.println("enter what do you want to update");
-			System.out.println(
-					" 1.patientname " + "\n" + " 2.patientid " + "\n" + " 3.patientage " + "\n" + " 4.patientmobileno ");
+			System.out.println(" 1.patientname " + "\n" + " 2.patientid " + "\n" + " 3.patientage " + "\n"
+					+ " 4.patientmobileno ");
 			int input = u.inputInteger();
 			switch (input) {
 			case 1:
@@ -221,14 +253,74 @@ public class ManagerServiceImplementation implements ManagerService{
 				list.get(index).setDoctorId(pmobile);
 				objectmapper.writeValue(filepath, list);
 				break;
-	}
+			}
 		}
 		CliniqueManager.option();
 	}
+
+	int count = 0;
+	int patientcount;
+	private String timeStamp;
+
+	public void takeAppointment() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+		System.out.println("enter patient name");
+		String patname = u.inputString();
+		System.out.println("enter patient id");
+		int patid = u.inputInteger();
+		DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/YYYY");
+		Date datenew1 = new Date();
+		String timeStamp = dateFormat1.format(datenew1);
+
+		if (search1(patname)) {
+			ap.setPatientName(patname);
+			ap.setPatientId(patid);
+			ap.setTimeStamp(timeStamp);
+
+		}
+
+		System.out.println("enter name of doctor you want to take appoint");
+		String docname = u.inputString();
+		System.out.println("enter doctor id");
+		int docid = u.inputInteger();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+		Date datenew = new Date();
+		String date = dateFormat.format(datenew);
+		if (search(docname)) {
+			ap.setDoctorName(docname);
+			ap.setDoctorId(docid);
+			ap.setTimeStamp(timeStamp);
+			System.out.println("appointment is fixed");
+		}
+		if (patientcount < 5) {
+			System.out.println("doctor available for appointment");
+		} else
+			System.out.println("doctor is not available for appointment");
+
+		ap = new Appointment(docname, docid, patname, patid, timeStamp);
+		JSONObject jobj2 = toJSONobject2(ap);
+		System.out.println(jobj2);
+		list2.add(ap);
+		writebook2(jobj2);
+	}
+
+	public static JSONObject toJSONobject2(Appointment appoint) {
+		JSONObject jsonobject2 = new JSONObject();
+		jsonobject2.put("doctorName", ap.getDoctorName());
+		jsonobject2.put("doctorId", ap.getDoctorId());
+		jsonobject2.put("patientName", ap.getPatientName());
+		jsonobject2.put("patientId", ap.getPatientId());
+		jsonobject2.put("timeStamp", ap.getTimeStamp());
+
+		return jsonobject2;
+	}
+
+	public static void writebook2(JSONObject jobj2) throws JsonGenerationException, JsonMappingException, IOException {
+
+		objectmapper = new ObjectMapper();
+		objectmapper.writeValue(filepath2, list2);
+	}
+
 	public void quit() {
 		System.exit(0);
 	}
-	
-	
-
 }

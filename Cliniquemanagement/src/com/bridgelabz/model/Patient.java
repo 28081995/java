@@ -5,33 +5,44 @@ public class Patient {
 	private int patientId;
 	private long patientMobileNo;
 	private int patientAge;
-	
-	public Patient(String patientName2, int patientId2, int patientage2, long patientmobileno2) {
+
+	public Patient(String patientName, int patientId, long patientMobileNo, int patientAge) {
+		this.patientName = patientName;
+		this.patientId = patientId;
+		this.patientMobileNo = patientMobileNo;
+		this.patientAge = patientAge;
 	}
+
 	public String getPatientName() {
 		return patientName;
 	}
+
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
+
 	public int getPatientId() {
 		return patientId;
 	}
+
 	public void setPatientId(int patientId) {
 		this.patientId = patientId;
 	}
+
 	public long getPatientMobileNo() {
 		return patientMobileNo;
 	}
+
 	public void setPatientMobileNo(long patientMobileNo) {
 		this.patientMobileNo = patientMobileNo;
 	}
+
 	public int getPatientAge() {
 		return patientAge;
 	}
+
 	public void setPatientAge(int patientAge) {
 		this.patientAge = patientAge;
 	}
-	
 
 }
