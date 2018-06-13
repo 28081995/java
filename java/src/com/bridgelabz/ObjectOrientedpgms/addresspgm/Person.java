@@ -1,12 +1,16 @@
 package com.bridgelabz.ObjectOrientedpgms.addresspgm;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class Person {
-	 String fname;
-	 String lname;
-	 String address;
-	 String city;
-	 String state;
-	 int zipcode;
+	String fname;
+	String lname;
+	String address;
+	String city;
+	String state;
+	int zipcode;
 	long phno;
 
 	public Person(String fname, String lname, String address, String city, String state, int zipcode, long phno) {

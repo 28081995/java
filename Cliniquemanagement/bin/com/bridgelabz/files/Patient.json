@@ -1,14 +1,1 @@
-[
-	{
-		"patientName": "pushpa",
-		"patientId": 3,
-		"fpatientMobileNo": 4546576,
-		"patientAge": 32
-	},
-	{
-		"patientName": "basu",
-		"patientId": 4,
-		"patientMobileNo": 454657,
-		"patientAge": 45
-	}
-]
+[]

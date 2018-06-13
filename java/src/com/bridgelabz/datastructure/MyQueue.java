@@ -45,4 +45,9 @@ public class MyQueue<T> {
 	public int size() {
 		return myLinkedList.size();
 	}
+	public void display()
+	{
+		myLinkedList.list();
+		
+	}
 }

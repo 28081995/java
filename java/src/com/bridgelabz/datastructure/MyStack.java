@@ -34,4 +34,8 @@ public class MyStack<T> {
 	public int size() {
 		return myLinkedList.size();
 	}
+	public void display()
+	{
+	 myLinkedList.list();;
+	}
 }

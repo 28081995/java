@@ -8,6 +8,10 @@ import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class AddressBookController {
 	static Utility u = new Utility();
 
@@ -18,30 +22,26 @@ public class AddressBookController {
 
 	public static void option() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter what you want to do");
-		System.out.println("press" + "\n" +"1. createnew " +"\n"+ "2. add" + "\n" + "3. edit " + "\n" + "4. delete " + "\n"
-				+ "5. sortbyName" + "\n" + "6. sortbyZip" + "\n" +"7. quit");
+		System.out.println("press" + "\n" + "1. createnew " + "\n" + "2. add" + "\n" + "3. edit " + "\n" + "4. delete "
+				+ "\n" + "5. sortbyName" + "\n" + "6. sortbyZip" + "\n" + "7. quit");
 		int choice = u.inputInteger();
 		switch (choice) {
-		/*case 1:
-			AddressBook.createNew();
-			break;*/
-		case 2:
+		case 1:
 			AddressBook.add();
 			break;
-		case 3:
+		case 2:
 			AddressBook.edit();
 			break;
-		case 4:
+		case 3:
 			AddressBook.delete();
 			break;
-		case 5:
-
+		case 4:
 			AddressBook.sortByName();
 			break;
-		case 6:
+		case 5:
 			AddressBook.sortByZIP();
 			break;
-		case 7:
+		case 6:
 			AddressBook.quit();
 			break;
 		default:

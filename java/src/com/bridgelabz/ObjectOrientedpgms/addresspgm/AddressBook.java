@@ -16,6 +16,10 @@ import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class AddressBook {
 	static String fname;
 	static String lname;
@@ -32,18 +36,13 @@ public class AddressBook {
 	static File filepath = new File(
 			"/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addresspgm/addressbook.json");
 
-	/*public static void createNew() 
-	{
-		if(filepath.createNewFile())
-		{
-			System.out.println("file is created");
-		abcontrol.option();
-	}
-		else {
-			System.out.println("file already exists");
-		abcontrol.option();
-		}
-	}*/
+	/**
+	 * method to add persons into address book
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void add() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter how many person you wish to add");
 		int noofpersons = u.inputInteger();
@@ -73,15 +72,21 @@ public class AddressBook {
 		abcontrol.option();
 	}
 
-
+	/**
+	 * method to write to file
+	 * @param jobj
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	public static void writebook(JSONObject jobj) throws JsonGenerationException, JsonMappingException, IOException {
-      /* System.out.println("do you want to save? then press yes");
-       String st=u.inputString();
-       if(st=="yes")
-       {*/
+		/*
+		 * System.out.println("do you want to save? then press yes"); String
+		 * st=u.inputString(); if(st=="yes") {
+		 */
 		objectmapper = new ObjectMapper();
 		objectmapper.writeValue(filepath, list);
-       //}
+		// }
 	}
 
 	public static JSONObject toJSONobject(Person person) {
@@ -99,6 +104,13 @@ public class AddressBook {
 
 	static int index;
 
+	/**
+	 * method to edit persons in address book
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void edit() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of person you want to edit");
 		String name = u.inputString();
@@ -147,6 +159,15 @@ public class AddressBook {
 		}
 	}
 
+	/**
+	 * method to search a particular person
+	 * @param sname
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static boolean search(String sname)
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list.size(); i++) {
@@ -160,6 +181,13 @@ public class AddressBook {
 		return false;
 	}
 
+	/**
+	 * method to remove a person from address book
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void delete() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter first name of person you want to delete");
 		String name = u.inputString();
@@ -171,67 +199,79 @@ public class AddressBook {
 		}
 
 	}
+
+	/**
+	 * method to sort by name of person in book
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void sortByName() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		Object ob = parser.parse(new FileReader(filepath));
-				
-		JSONArray arr=(JSONArray) ob;
+
+		JSONArray arr = (JSONArray) ob;
 		System.out.println(arr);
-		ArrayList<JSONObject>arraylist=new ArrayList<JSONObject>();
-		for(int i=0;i<arr.size();i++)
-		{
-			JSONObject jobj=(JSONObject) arr.get(i);
+		ArrayList<JSONObject> arraylist = new ArrayList<JSONObject>();
+		for (int i = 0; i < arr.size(); i++) {
+			JSONObject jobj = (JSONObject) arr.get(i);
 			arraylist.add(jobj);
 		}
-		for (int i = 0; i <arraylist.size()-1; i++) {
+		for (int i = 0; i < arraylist.size() - 1; i++) {
 			for (int j = i + 1; j < arraylist.size(); j++) {
-				 
-			                JSONObject person1 = (JSONObject)arraylist.get(i);
-			                String key1 = (String) person1.get("fname");
-			                JSONObject person2 =  (JSONObject) arraylist.get(j);
-			                String key2 = (String) person2.get("fname");
-			                if (key1.compareTo(key2) > 0) {
-			                    JSONObject temp = person1; 
-			                    arraylist.set(i, person2);
-			                    arraylist.set(j, person1);
-			                }
-			            }
-			        }
+
+				JSONObject person1 = (JSONObject) arraylist.get(i);
+				String key1 = (String) person1.get("fname");
+				JSONObject person2 = (JSONObject) arraylist.get(j);
+				String key2 = (String) person2.get("fname");
+				if (key1.compareTo(key2) > 0) {
+					JSONObject temp = person1;
+					arraylist.set(i, person2);
+					arraylist.set(j, person1);
+				}
+			}
+		}
 		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("first name wise sorted");
 	}
 
+	/**
+	 * method to search a person by zipcode in book
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void sortByZIP() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		Object ob = parser.parse(new FileReader(filepath));
-		JSONArray arr=(JSONArray) ob;
+		JSONArray arr = (JSONArray) ob;
 		System.out.println(arr);
-		ArrayList<JSONObject>arraylist=new ArrayList<JSONObject>();
-		for(int i=0;i<arr.size();i++)
-		{
-			JSONObject jobj=(JSONObject) arr.get(i);
+		ArrayList<JSONObject> arraylist = new ArrayList<JSONObject>();
+		for (int i = 0; i < arr.size(); i++) {
+			JSONObject jobj = (JSONObject) arr.get(i);
 			arraylist.add(jobj);
 		}
-		for (int i = 0; i <arraylist.size()-1; i++) {
+		for (int i = 0; i < arraylist.size() - 1; i++) {
 			for (int j = i + 1; j < arraylist.size(); j++) {
-				 
-			                JSONObject person1 = (JSONObject)arraylist.get(i);
-			                long key1 = (long) person1.get("zipcode");
-			                JSONObject person2 =  (JSONObject) arraylist.get(j);
-			                long key2 = (long) person2.get("zipcode");
-			                if (key1>key2) {
-			                    JSONObject temp = person1;
-			                    arraylist.set(i, person2);
-			                    arraylist.set(j, person1);
-			                }
-			            }
-			        }
-		
+
+				JSONObject person1 = (JSONObject) arraylist.get(i);
+				long key1 = (long) person1.get("zipcode");
+				JSONObject person2 = (JSONObject) arraylist.get(j);
+				long key2 = (long) person2.get("zipcode");
+				if (key1 > key2) {
+					JSONObject temp = person1;
+					arraylist.set(i, person2);
+					arraylist.set(j, person1);
+				}
+			}
+		}
+
 		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("zipcode wise sorted");
 
 	}
+
 	public static void quit() {
-     System.exit(0);
+		System.exit(0);
 	}
 }

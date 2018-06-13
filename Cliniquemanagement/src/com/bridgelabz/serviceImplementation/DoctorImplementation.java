@@ -10,14 +10,21 @@ import com.bridgelabz.controller.CliniqueManager;
 import com.bridgelabz.service.DoctorService;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public class DoctorImplementation implements DoctorService {
 	static Utility u = new Utility();
 	static int index;
 
 	public void showDoctorDetails() {
-
+     
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.DoctorService#searchDoctorById()
+	 */
 	@Override
 	public void searchDoctorById() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter the id of doctor you want to search");
@@ -31,6 +38,9 @@ public class DoctorImplementation implements DoctorService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.DoctorService#searchDoctorByName()
+	 */
 	@Override
 	public void searchDoctorByName() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter the name of doctor you want to search");
@@ -44,6 +54,9 @@ public class DoctorImplementation implements DoctorService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.DoctorService#searchDoctorBySpecialization()
+	 */
 	@Override
 	public void searchDoctorBySpecialization()
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
@@ -58,6 +71,9 @@ public class DoctorImplementation implements DoctorService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.DoctorService#searchDoctorByAvailability()
+	 */
 	@Override
 	public void searchDoctorByAvailability() {
 		System.out.println("doctor available" + "AM/PM/both");

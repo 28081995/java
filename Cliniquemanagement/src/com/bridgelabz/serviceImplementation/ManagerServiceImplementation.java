@@ -50,6 +50,9 @@ public class ManagerServiceImplementation implements ManagerService {
 	Patient patient;
 	static Appointment ap;
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#addDoctor()
+	 */
 	public void addDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter doctor details");
 		System.out.println("enter how many doctors are there?");
@@ -74,6 +77,10 @@ public class ManagerServiceImplementation implements ManagerService {
 		CliniqueManager.option();
 	}
 
+	/**
+	 * @param doctor
+	 * @return
+	 */
 	public static JSONObject toJSONobject(Doctor doctor) {
 		JSONObject jsonobject = new JSONObject();
 		jsonobject.put("doctorName", doctor.getDoctorName());
@@ -93,6 +100,15 @@ public class ManagerServiceImplementation implements ManagerService {
 
 	static int index;
 
+	/**
+	 * method to search doctor by name
+	 * @param name
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static boolean search(String name)
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list.size(); i++) {
@@ -106,6 +122,9 @@ public class ManagerServiceImplementation implements ManagerService {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#deleteDoctor()
+	 */
 	public void deleteDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of doctor you want to delete");
 		String name = u.inputString();
@@ -118,6 +137,9 @@ public class ManagerServiceImplementation implements ManagerService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#updateDoctor()
+	 */
 	public void updateDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of doctor you want to update");
 		String name = u.inputString();
@@ -152,6 +174,9 @@ public class ManagerServiceImplementation implements ManagerService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#addPatient()
+	 */
 	@Override
 	public void addPatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter patient details");
@@ -175,6 +200,10 @@ public class ManagerServiceImplementation implements ManagerService {
 		CliniqueManager.option();
 	}
 
+	/**
+	 * @param patient
+	 * @return
+	 */
 	public static JSONObject toJSONobject1(Patient patient) {
 		JSONObject jsonobject1 = new JSONObject();
 		jsonobject1.put("patientName", patient.getPatientName());
@@ -191,6 +220,9 @@ public class ManagerServiceImplementation implements ManagerService {
 		objectmapper.writeValue(filepath1, list1);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#deletePatient()
+	 */
 	@Override
 	public void deletePatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of patient you want to delete");
@@ -206,6 +238,15 @@ public class ManagerServiceImplementation implements ManagerService {
 
 	static int index1;
 
+	/**
+	 * method to patient by name
+	 * @param sname
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static boolean search1(String sname)
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		for (int i = 0; i < list1.size(); i++) {
@@ -218,6 +259,9 @@ public class ManagerServiceImplementation implements ManagerService {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.ManagerService#updatePatient()
+	 */
 	@Override
 	public void updatePatient() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter name of patient you want to update");
@@ -262,6 +306,13 @@ public class ManagerServiceImplementation implements ManagerService {
 	int patientcount;
 	private String timeStamp;
 
+	/**
+	 * method to take appointment by doctor
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void takeAppointment() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter patient name");
 		String patname = u.inputString();
@@ -277,7 +328,6 @@ public class ManagerServiceImplementation implements ManagerService {
 			ap.setTimeStamp(timeStamp);
 
 		}
-
 		System.out.println("enter name of doctor you want to take appoint");
 		String docname = u.inputString();
 		System.out.println("enter doctor id");
@@ -302,7 +352,10 @@ public class ManagerServiceImplementation implements ManagerService {
 		list2.add(ap);
 		writebook2(jobj2);
 	}
-
+	/**
+	 * @param appoint
+	 * @return
+	 */
 	public static JSONObject toJSONobject2(Appointment appoint) {
 		JSONObject jsonobject2 = new JSONObject();
 		jsonobject2.put("doctorName", ap.getDoctorName());

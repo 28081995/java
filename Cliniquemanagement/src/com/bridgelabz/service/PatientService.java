@@ -6,6 +6,10 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.json.simple.parser.ParseException;
 
+/**
+ * @author bridgelabz
+ *
+ */
 public interface PatientService {
 
 	public void showPatientDetails();

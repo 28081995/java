@@ -25,6 +25,9 @@ public class PatientServiceImplementation implements PatientService {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.PatientService#searchPatientById()
+	 */
 	@Override
 	public void searchPatientById() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter the id of patient you want to search");
@@ -38,6 +41,9 @@ public class PatientServiceImplementation implements PatientService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.PatientService#searchPatientByName()
+	 */
 	@Override
 	public void searchPatientByName()
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
@@ -52,6 +58,9 @@ public class PatientServiceImplementation implements PatientService {
 		CliniqueManager.option();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.service.PatientService#searchPatientByMobileNo()
+	 */
 	@Override
 	public void searchPatientByMobileNo()
 			throws JsonGenerationException, JsonMappingException, IOException, ParseException {

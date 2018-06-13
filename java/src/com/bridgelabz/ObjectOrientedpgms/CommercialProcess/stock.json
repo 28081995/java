@@ -1,0 +1,22 @@
+[
+	{
+		"dateTime": null,
+		"symbol": "@",
+		"price": 525.0,
+		"numberOfShares": 52,
+		"value": 27300.0
+	},
+	{
+		"dateTime": null,
+		"symbol": "#",
+		"price": 555.0,
+		"numberOfShares": 5552,
+		"value": 3081360.0
+	},
+	{
+		"symbol": "a",
+		"dateOfTransaction": "13/06/2018",
+		"noofshare": 1,
+		"price": 2000.0
+	}
+]
