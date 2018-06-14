@@ -5,7 +5,7 @@ public class Doctor {
 	private int doctorId;
 	private String doctorSpecialisation;
 	private String doctorAvailability;
-	private int patientCount;
+	private static int patientCount;
 
 	public Doctor(String doctorName, int doctorId, String doctorSpecialisation, String doctorAvailability,
 			int patientCount) {

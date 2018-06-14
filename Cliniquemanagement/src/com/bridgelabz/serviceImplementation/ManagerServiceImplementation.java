@@ -22,7 +22,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * @author bridgelabz
- *
  */
 public class ManagerServiceImplementation implements ManagerService {
 	static String doctorName;
@@ -64,7 +63,7 @@ public class ManagerServiceImplementation implements ManagerService {
 			int doctorId = u.inputInteger();
 			System.out.println("enter doctor specialization");
 			String doctorSpecialisation = u.inputString();
-			System.out.println("enter doctor availability");
+			System.out.println("enter doctor availability(AM/PM/Both)");
 			String doctorAvailability = u.inputString();
 			System.out.println("enter patient count");
 			int patientCount = u.inputInteger();
@@ -341,7 +340,7 @@ public class ManagerServiceImplementation implements ManagerService {
 			ap.setTimeStamp(timeStamp);
 			System.out.println("appointment is fixed");
 		}
-		if (patientcount < 5) {
+		if (doctor.getPatientCount() < 5) {
 			System.out.println("doctor available for appointment");
 		} else
 			System.out.println("doctor is not available for appointment");
@@ -351,6 +350,7 @@ public class ManagerServiceImplementation implements ManagerService {
 		System.out.println(jobj2);
 		list2.add(ap);
 		writebook2(jobj2);
+		CliniqueManager.option();
 	}
 	/**
 	 * @param appoint
@@ -371,6 +371,19 @@ public class ManagerServiceImplementation implements ManagerService {
 
 		objectmapper = new ObjectMapper();
 		objectmapper.writeValue(filepath2, list2);
+	}
+	public void famousDoctor() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+        Doctor popular = list.get(0);
+        for (int i = 0; i < list.size(); i++) {
+            if (doctor.getPatientCount() <= list.get(i).getPatientCount()) {
+                popular = list.get(i);
+        }
+        System.out.println("Famous doctor");
+        System.out.println(doctor.getDoctorName());
+        System.out.println("famous specialization");
+        System.out.println(doctor.getDoctorSpecialisation());
+        CliniqueManager.option();
+    }
 	}
 
 	public void quit() {

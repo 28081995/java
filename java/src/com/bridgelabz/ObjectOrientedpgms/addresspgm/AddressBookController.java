@@ -15,15 +15,22 @@ import com.bridgelabz.utility.Utility;
 public class AddressBookController {
 	static Utility u = new Utility();
 
-	public static void main(String[] args)
-			throws JsonGenerationException, JsonMappingException, IOException, ParseException {
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException, ParseException
+	{
+		try {
+		option();
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("person is not added into the list");
+		}
 		option();
 	}
 
 	public static void option() throws JsonGenerationException, JsonMappingException, IOException, ParseException {
 		System.out.println("enter what you want to do");
-		System.out.println("press" + "\n" + "1. createnew " + "\n" + "2. add" + "\n" + "3. edit " + "\n" + "4. delete "
-				+ "\n" + "5. sortbyName" + "\n" + "6. sortbyZip" + "\n" + "7. quit");
+		System.out.println("press" + "\n" + "1. add" + "\n" + "2. edit " + "\n" + "3. delete "
+				+ "\n" + "4. sortbyName" + "\n" + "5. sortbyZip" + "\n" + "6. quit");
 		int choice = u.inputInteger();
 		switch (choice) {
 		case 1:

@@ -16,6 +16,7 @@ public class DeckOfCardsQueue {
 		QueueLinklist[] cards = new QueueLinklist[52];
 		for (int i = 0; i < cards.length; i++) {
 			cards[i] = new QueueLinklist();
+			System.out.println(cards);
 		}
 		for (int i = 0; i < suit.length; i++) {
 			for (int j = 0; j < rank.length; j++) {

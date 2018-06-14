@@ -32,7 +32,7 @@ public class CliniqueManager {
 
 		System.out.println("press" + "\n" + "1. adddoctor" + "\n" + "2. deletedoctor " + "\n" + "3. updatedoctor "
 				+ "\n" + "4. addpatient " + "\n" + "5. deletepatient" + "\n" + "6. updatepatient" + "\n"
-				+ "7. takeappointment" + "8. quit");
+				+ "7. takeappointment" +"\n"+"8. famousDoctor" +"\n"+"9. quit");
 		int choice = u.inputInteger();
 		switch (choice) {
 
@@ -56,6 +56,12 @@ public class CliniqueManager {
 			break;
 		case 7:
 			managerimpl.takeAppointment();
+			break;
+		case 8:
+			managerimpl.famousDoctor();
+			break;
+		case 9:
+			managerimpl.quit();
 			break;
 		default:
 			break;

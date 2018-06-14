@@ -1,1 +1,20 @@
-[{"fname":"dee","lname":"gfg","address":"fh","city":"hv","state":"hjgj","zipcode":5,"phno":5657}]
+[
+	{
+		"zipcode": 6,
+		"fname": "anita",
+		"lname": "hghj",
+		"address": "hgghj",
+		"city": "hjgj",
+		"state": "ghjgj",
+		"phno": 657657
+	},
+	{
+		"zipcode": 5,
+		"fname": "aruna",
+		"lname": "gg",
+		"address": "fhg",
+		"city": "hghj",
+		"state": "ghj",
+		"phno": 54657
+	}
+]

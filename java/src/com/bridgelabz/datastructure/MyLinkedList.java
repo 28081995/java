@@ -27,7 +27,7 @@ public class MyLinkedList<T> {
 
 	/**
 	 * @param data
-	 *            - data to be added] adds element to the list at end of the list
+	 *            - data to be added adds element to the list at end of the list
 	 */
 	public void add(T data) {
 		MyNode<T> node = new MyNode<T>(data);

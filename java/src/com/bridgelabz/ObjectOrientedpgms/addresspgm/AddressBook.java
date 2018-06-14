@@ -36,6 +36,7 @@ public class AddressBook {
 	static File filepath = new File(
 			"/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addresspgm/addressbook.json");
 
+	
 	/**
 	 * method to add persons into address book
 	 * @throws JsonGenerationException
@@ -153,10 +154,13 @@ public class AddressBook {
 				break;
 			default:
 				break;
-
+				
 			}
-
+			//System.out.println("person is not found");
+			//abcontrol.option();
 		}
+		System.out.println("person is not found");
+		abcontrol.option();
 	}
 
 	/**
@@ -176,9 +180,12 @@ public class AddressBook {
 				index = i;
 				return true;
 			}
+			
+			//System.out.println("person not found");
 		}
-		abcontrol.option();
+		//abcontrol.option();
 		return false;
+		
 	}
 
 	/**
@@ -197,7 +204,8 @@ public class AddressBook {
 			objectmapper.writeValue(filepath, list);
 			System.out.println("person deleted");
 		}
-
+		System.out.println("person is not found");
+		abcontrol.option();
 	}
 
 	/**
@@ -233,6 +241,7 @@ public class AddressBook {
 		}
 		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("first name wise sorted");
+		abcontrol.option();
 	}
 
 	/**
@@ -251,7 +260,7 @@ public class AddressBook {
 			JSONObject jobj = (JSONObject) arr.get(i);
 			arraylist.add(jobj);
 		}
-		for (int i = 0; i < arraylist.size() - 1; i++) {
+		for(int i = 0; i < arraylist.size() - 1; i++) {
 			for (int j = i + 1; j < arraylist.size(); j++) {
 
 				JSONObject person1 = (JSONObject) arraylist.get(i);
@@ -268,10 +277,11 @@ public class AddressBook {
 
 		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("zipcode wise sorted");
-
+		abcontrol.option();
 	}
 
 	public static void quit() {
 		System.exit(0);
 	}
+	
 }

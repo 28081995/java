@@ -1,16 +1,1 @@
-[
-	{
-		"doctorName": "aruna",
-		"doctorId": 1,
-		"doctorSpecialisation": "eye",
-		"doctorAvailability": "am",
-		"patientCount": 4
-	},
-	{
-		"doctorName": "pradeep",
-		"doctorId": 2,
-		"doctorSpecialisation": "ear",
-		"doctorAvailability": "pm",
-		"patientCount": 6
-	}
-]
+[{"doctorName":"aruna","doctorId":2,"doctorSpecialisation":"eye","doctorAvailability":"AM","patientCount":2},{"doctorName":"arohi","doctorId":2,"doctorSpecialisation":"ear","doctorAvailability":"PM","patientCount":3}]
