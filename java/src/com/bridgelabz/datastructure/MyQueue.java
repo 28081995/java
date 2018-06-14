@@ -32,6 +32,9 @@ public class MyQueue<T> {
 	public T dequeue() {
 		return myLinkedList.pop(0);
 	}
+	public T dequeue1(T data) {
+		return myLinkedList.pop(0);
+	}
 	/**
 	 * @returns true if list is empty else returns false
 	 */
@@ -50,4 +53,5 @@ public class MyQueue<T> {
 		myLinkedList.list();
 		
 	}
+	
 }

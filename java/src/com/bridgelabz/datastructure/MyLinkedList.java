@@ -7,7 +7,7 @@ package com.bridgelabz.datastructure;
  */
 public class MyLinkedList<T> {
 
-	MyNode<T> head; // starting node
+    MyNode<T> head; // starting node
 	MyNode<T> current; // last node
 	int position; // position of last node
 
@@ -209,7 +209,6 @@ public class MyLinkedList<T> {
 	}
 
 }
-
 class MyNode<T> {
 	T data; // data to be stored
 	MyNode<T> next; // reference to the next node

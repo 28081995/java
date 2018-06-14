@@ -3,6 +3,7 @@ package com.bridgelabz.datastructure;
 public class Node<T> {
 	T ele;
 	Node<T> next;
+	public Comparable data;
 
 	public Node(T ele) {
 		this.ele = ele;
