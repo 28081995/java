@@ -1,4 +1,4 @@
-package com.bridgelabz.designpattern.singletonPattern;
+package com.bridgelabz.designpattern.creationalDesignPattern.singletonPattern;
 
 import java.lang.reflect.Constructor;
 

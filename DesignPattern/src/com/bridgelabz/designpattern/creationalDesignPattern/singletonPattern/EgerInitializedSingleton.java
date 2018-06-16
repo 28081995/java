@@ -1,4 +1,4 @@
-package com.bridgelabz.designpattern.singletonPattern;
+package com.bridgelabz.designpattern.creationalDesignPattern.singletonPattern;
 
 public class EgerInitializedSingleton {
 	private static EgerInitializedSingleton instance = new EgerInitializedSingleton();
