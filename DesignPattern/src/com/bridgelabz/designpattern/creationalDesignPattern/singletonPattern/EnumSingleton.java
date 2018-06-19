@@ -7,6 +7,7 @@ public enum EnumSingleton {
     
     public static void doSomething(){
         //do something
+    	System.out.println("print hiii");
     
     }
 }
