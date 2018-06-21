@@ -10,8 +10,10 @@ import java.sql.SQLException;
  * @author bridgelabz
  *
  */
-public class LogInValidation {
-	public static void main(String[] args) {
+public class LogInValidation 
+{
+	public static void main(String[] args) 
+	{
 		Utility u = new Utility();
 		PreparedStatement pstmt = null;
 		Connection con = null;

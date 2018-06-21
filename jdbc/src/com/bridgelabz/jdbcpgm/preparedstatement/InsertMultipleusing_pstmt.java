@@ -6,12 +6,15 @@ import java.sql.*;
  * @author bridgelabz
  *
  */
-public class InsertMultipleusing_pstmt {
-	public static void main(String[] args) {
+public class InsertMultipleusing_pstmt 
+{
+	public static void main(String[] args) 
+	{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String qry = "insert into person.student2 values(?,?,?)";
-		try {
+		try 
+		{
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
 			pstmt = con.prepareStatement(qry);
@@ -28,26 +31,33 @@ public class InsertMultipleusing_pstmt {
 			pstmt.setString(3, "bidar");
 			pstmt.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} 
+		catch (ClassNotFoundException | SQLException e) 
+		{
 			e.printStackTrace();
-		} finally {
-			if (con != null) {
-				try {
+		} 
+		finally {
+			if (con != null) 
+			{
+				try 
+				{
 					con.close();
-				} catch (SQLException e) {
+				} 
+				catch (SQLException e) 
+				{
 					e.printStackTrace();
 				}
 			}
-			if (pstmt != null) {
-				try {
+			if (pstmt != null) 
+			{
+				try 
+				{
 					pstmt.close();
-				} catch (SQLException e) {
+				} 
+				catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
-
 		}
-
 	}
-
 }

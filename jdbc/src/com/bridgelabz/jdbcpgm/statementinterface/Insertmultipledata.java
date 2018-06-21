@@ -11,8 +11,8 @@ import java.sql.Statement;
  */
 public class Insertmultipledata {
 	public static void main(String[] args) {
-		Statement stmt = null;
 		Connection con = null;
+		Statement stmt = null;
 		String qry1 = "insert into person.student1 values(1,'cruna','rnr')";
 		String qry2 = "insert into person.student1 values(2,'vruna','haveri')";
 		String qry3 = "insert into person.student1 values(3,'kruna','dvg')";
@@ -31,21 +31,20 @@ public class Insertmultipledata {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			}
+			
 			if (stmt != null) {
 				try {
 					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
 		}
