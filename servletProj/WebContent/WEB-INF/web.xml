@@ -1,0 +1,16 @@
+<web-app
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>postproj</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>FirstServ</servlet-name>
+		<servlet-class>servletPgm.FirstServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FirstServ</servlet-name>
+		<url-pattern>/fs</url-pattern>
+	</servlet-mapping>
+</web-app>
