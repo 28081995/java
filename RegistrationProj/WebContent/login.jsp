@@ -9,9 +9,11 @@
 <body bgcolor='yellow'>
 <form action="LoginClass" method="post">
 		user name:<input type="text" name="u" /><br> 
+		email:<input type="text" name="e" /><br> 
 		password:<input type="password" name="p" /><br> 
 		<input type="submit" value="login" />
 		<input type="reset" value="reset">
 	</form>
+	<form action="PreEmail" method = "post" > <input type="submit" value="Forgot Password??"></form>
 </body>
 </html>
