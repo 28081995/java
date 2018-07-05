@@ -1,9 +1,10 @@
 package com.bridgelabz.jdbcpgm;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.bridgelabz.jdbcpgm.Utility;
 
 /**
  * @author bridgelabz
