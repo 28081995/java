@@ -1,5 +1,8 @@
 package com.bridgelabz.jdbcpgm;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -44,5 +47,38 @@ public class Utility {
 		String st = sc.nextLine();
 		return st;
 	}
+	
+	  /************************************************************************************************
+	   * database connectivity     
+	   * @param db_name
+	   * @param user_name
+	   * @param password
+	   * @return
+	   */
+	    public static Connection getConnection(String db_name,String user_name,String password)
+	    {
+	        Connection con=null;
+	        try
+	        {
+	        Class.forName("com.mysql.jdbc.Driver");
+	        con=DriverManager.getConnection("jdbc:mysql://localhost/"+db_name+"?user="+user_name+"&password="+password);
+	        }
+	        catch(Exception e)
+	        {
+	            e.printStackTrace();
+	        }
+	        finally {
+	        	if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+	        }
+
+	        return con;        
+	    }
+	 
 
 }

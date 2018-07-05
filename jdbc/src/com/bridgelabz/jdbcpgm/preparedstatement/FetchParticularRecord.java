@@ -22,8 +22,7 @@ public class FetchParticularRecord {
 		System.out.println("enter id of student you want to fetch");
 		int stId = u.inputInteger();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			pstmt = con.prepareStatement(qry);
 			pstmt.setInt(1, stId);
 			rs = pstmt.executeQuery();
@@ -34,7 +33,7 @@ public class FetchParticularRecord {
 				System.out.println(name + " " + place);
 			} else
 				System.out.println("student id you entered is not found");
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

@@ -28,8 +28,7 @@ public class Transaction {
 		System.out.println("enter place");
 		String place = u.inputString();*/
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			con.setAutoCommit(false);
 
 			pstmt = con.prepareStatement(qry);
@@ -47,7 +46,7 @@ public class Transaction {
 			pstmt.executeUpdate();
 		/*	con.rollback(sp);*/
 			con.commit();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			try {
 				con.rollback(sp);
 			} catch (SQLException e1) {

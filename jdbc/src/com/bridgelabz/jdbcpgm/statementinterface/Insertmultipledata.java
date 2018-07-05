@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.bridgelabz.jdbcpgm.Utility;
+
 /**
  * @author bridgelabz
  *
@@ -19,8 +21,7 @@ public class Insertmultipledata {
 		String qry4 = "insert into person.student1 values(4,'runa','hubli')";
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			stmt = con.createStatement();
 			int i = stmt.executeUpdate(qry1);
 			System.out.println(i + "rows affected ");
@@ -28,7 +29,7 @@ public class Insertmultipledata {
 			stmt.executeUpdate(qry3);
 			stmt.executeUpdate(qry4);
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			
@@ -39,14 +40,7 @@ public class Insertmultipledata {
 					e.printStackTrace();
 				}
 			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
+			
 		}
 	}
 

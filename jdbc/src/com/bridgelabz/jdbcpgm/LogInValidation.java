@@ -24,8 +24,7 @@ public class LogInValidation
 		System.out.println("enter password");
 		String pwd = u.inputString();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			pstmt = con.prepareStatement(qry);
 			pstmt.setString(1, uname);
 			pstmt.setString(2, pwd);
@@ -35,7 +34,7 @@ public class LogInValidation
 				System.out.println("successfully login to gmail");
 			} else
 				System.err.println("invalid username or password");
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch ( SQLException e) {
 			e.printStackTrace();
 		}
 

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.bridgelabz.jdbcpgm.Utility;
+
 /**
  * @author bridgelabz
  *
@@ -18,8 +20,7 @@ public class InsertSingleData {
 		String qry1 = "update person.employee set name='boss' where id=1";
 		String qry2 = "delete from person.employee where id=2";
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			stmt = con.createStatement();
 			stmt.executeUpdate(qry);
 			System.out.println("data inserted");
@@ -27,11 +28,10 @@ public class InsertSingleData {
 			System.out.println("data updated");
 			stmt.executeUpdate(qry2);
 			System.out.println("data deleted");
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (con != null)
-				con.close();
+
 			if (stmt != null)
 				stmt.close();
 		}

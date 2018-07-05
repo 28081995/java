@@ -17,8 +17,7 @@ public class BatchUpdate {
 		String updateqry = "update person.employee1 set name='boss2' where id=3";
 		String deleteqry = "delete from person.employee1 where id=4";
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306?user=root&password=bridgeit");
+			con = Utility.getConnection("mysql", "root", "bridgeit");
 			stmt = con.createStatement();
 			stmt.addBatch(insertqry);
 			stmt.addBatch(updateqry);
@@ -27,7 +26,7 @@ public class BatchUpdate {
 			for (int i : arr) {
 				System.out.println(i);
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (con != null)
