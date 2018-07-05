@@ -15,14 +15,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMail1 {
-	public static void send(String to, String user, String pass) throws ClassNotFoundException {
+	public static void send(String to, String Email, String pass) throws ClassNotFoundException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String userPassword = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String dbUrl = "jdbc:mysql://localhost:3306/bridgelabz?user=root&password=root";
+			String dbUrl = "jdbc:mysql://localhost:3306/bridgelabz?user=root&password=bridgeit";
 			con = DriverManager.getConnection(dbUrl);
 			String sql = "select * from Person.usertable where Email=?";
 			pstmt = con.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class SendMail1 {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("enterd into send email");
+		System.out.println("entered into send email");
 
 		// create an instance of Properties Class
 		Properties props = new Properties();
@@ -60,7 +60,7 @@ public class SendMail1 {
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, pass);
+				return new PasswordAuthentication(Email, pass);
 			}
 		});
 
@@ -71,7 +71,7 @@ public class SendMail1 {
 			 */
 
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(user));
+			message.setFrom(new InternetAddress(Email));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 			message.setText(userPassword);

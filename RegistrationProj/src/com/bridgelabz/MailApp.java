@@ -20,9 +20,10 @@ public class MailApp extends HttpServlet {
 		// String message = request.getParameter("message");
 		String Email = "aruna28aug@gmail.com";
 		String Password = "Aruna@123";
-		RequestDispatcher dispatch = request.getRequestDispatcher("PreLoginClass");
-		dispatch.forward(request, response);
+		
 		try {
+			RequestDispatcher dispatch = request.getRequestDispatcher("PreLoginClass");
+			dispatch.forward(request, response);
 			SendMail1.send(to, Email, Password);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
