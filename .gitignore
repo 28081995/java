@@ -38,3 +38,6 @@ Thumbs.db
 Servers/*
 *.recommenders
 *.metadata
+*.project
+*.classpath
+
