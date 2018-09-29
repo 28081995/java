@@ -61,22 +61,13 @@ public class Utility {
 	        try
 	        {
 	        Class.forName("com.mysql.jdbc.Driver");
-	        con=DriverManager.getConnection("jdbc:mysql://localhost/"+db_name+"?user="+user_name+"&password="+password);
+	        con=DriverManager.getConnection("jdbc:mysql://rds-security.cgipjwom4bc4.us-east-2.rds.amazonaws.com/"+db_name+"?user="+user_name+"&password="+password);
 	        }
 	        catch(Exception e)
 	        {
 	            e.printStackTrace();
 	        }
-	        finally {
-	        	if (con != null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-	        }
-
+	     
 	        return con;        
 	    }
 	 

@@ -1,10 +1,17 @@
 package com.bridgelabz.utility;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
+import org.codehaus.jackson.type.TypeReference;
 import org.json.simple.JSONObject;
 
 import com.bridgelabz.ObjectOrientedpgms.addresspgm.Person;
@@ -957,7 +964,18 @@ public class Utility {
 			System.out.println();
 		}
 	}
-
+	public static <T> void convertJavaToJson(T object,String file) throws JsonGenerationException, JsonMappingException, IOException
+	{
+		ObjectMapper mapper=new ObjectMapper();
+		ObjectWriter writer=mapper.writer();
+		writer.writeValue(new File(file), object);	
+	}
+ /* public static <T> ArrayList<T> convertJsonToList(String filepath,ArrayList<T> list)
+  {
+	ObjectMapper mapper=new ObjectMapper();
+	list=mapper.readValues(new File(filepath),new TypeReference<ArrayList<T>>());
+			
+  }*/
 	/******************************************************************************************
 	 * 
 	 */

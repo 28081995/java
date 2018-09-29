@@ -16,11 +16,11 @@ public class InsertSingleData {
 	public static void main(String[] args) throws SQLException {
 		Connection con = null;
 		Statement stmt = null;
-		String qry = "insert into person.employee values(8,'pushpa','lead')";
-		String qry1 = "update person.employee set name='boss' where id=1";
-		String qry2 = "delete from person.employee where id=2";
+		String qry = "insert into person.employee values(11,'aruna','lead')";
+		String qry1 = "update person.employee set name='boss' where id=8";
+		String qry2 = "delete from person.employee where id=11";
 		try {
-			con = Utility.getConnection("mysql", "root", "bridgeit");
+			con = Utility.getConnection("mysql", "root", "password");
 			stmt = con.createStatement();
 			stmt.executeUpdate(qry);
 			System.out.println("data inserted");
@@ -34,6 +34,14 @@ public class InsertSingleData {
 
 			if (stmt != null)
 				stmt.close();
+			
+	        if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
 		}
 
 	}

@@ -36,7 +36,6 @@ public class AddressBook {
 	static File filepath = new File(
 			"/home/bridgelabz/aruna1/programs/java/src/com/bridgelabz/ObjectOrientedpgms/addresspgm/addressbook.json");
 
-	
 	/**
 	 * method to add persons into address book
 	 * @throws JsonGenerationException
@@ -102,7 +101,6 @@ public class AddressBook {
 
 		return jsonobject;
 	}
-
 	static int index;
 
 	/**
@@ -274,14 +272,11 @@ public class AddressBook {
 				}
 			}
 		}
-
 		objectmapper.writeValue(filepath, arraylist);
 		System.out.println("zipcode wise sorted");
 		abcontrol.option();
 	}
-
 	public static void quit() {
 		System.exit(0);
 	}
-	
 }
